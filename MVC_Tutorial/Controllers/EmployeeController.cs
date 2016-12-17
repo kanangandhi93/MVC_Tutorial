@@ -10,15 +10,12 @@ namespace MVC_Tutorial.Controllers
     public class EmployeeController : Controller
     {
         // GET: Employee
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            Employee emp = new Models.Employee()
-            {
-                Id = 1,
-                Name = "Kanan"
-            };
+            EmpContext db = new Models.EmpContext();
+           Employee employee= db.emp.Single(x => x.Id==id);
 
-            return View(emp);
+            return View(employee);
         }
     }
 }
